@@ -68,12 +68,6 @@ JWT Token based authentication is implementated to secure the WebApi services. *
 ## Database Design
 ![Database Design](https://8dmprw.dm.files.1drv.com/y4mFOnWFyfydK_fr_Cm6EA0spR2Ms8gG4XHVs01AO_pJ04-rHLI_GL6gWbEcXL2FIIDJN4AmAHs4K7o_BzO22oAuTP1hyT1wJdeOx_5kRI9J0t-XLRSkIHenLo0n7xbEcanL2luIHM16WawZ5__xJmMATY5YK8O8UT8P8W8CBp_bWnbsxcndOtUBN4E34tJHGqNb1GC2-hCW2fKKkHFMXo56w?width=1226&height=428&cropmode=none)
 
-## Domain Models, Related Struct and Enum Type
-
-The below snapshot show the Domain Models (Business Objects) and related Struct, Enum Type used in the service logic. The POCO classes 'AccountSummary', 'AccountTransaction' and 'TransactionResult' are the Domain Models. I considered using a struct 'Money' type to represent balance amount or transaction amount and overloaded the type with the operators for amount calculation. 'Money' is a combination of amount and currency.
-
-![Domain Models](https://ulbtiw.dm.files.1drv.com/y4mZ8At0ROu4UlVrnSI_hBXV3xnAPtCg7BJcU06s0G33BYYW2i7nntMeu5gXqBs9xV6rvmHwVY9VF5L-7qwqlINw35XCMh5V4oRwHmWCTgi8hvWq4aVDfrn1bl0Bl8geB6hGRawW-OwjXp36Q-Gxk2MW23MgyUHoCi5JCChMIqBkXb5q0_P02-GR_X79VYH5Rs6GTukxCLjfXNB0lPAFwUeRQ?width=987&height=755&cropmode=none)
-
 ## WebApi Endpoints
 The application has four API endpoints configured in the API Gateway to demonstrate the features with token based security options enabled. These routes are exposed to the client app to cosume the back-end services. 
 
