@@ -33,7 +33,7 @@ The sample application is build based on the microservices architecture. There a
 ![Application Architecture](https://8dmbiq.dm.files.1drv.com/y4mKz6TDtiwhrfo2mdUgvzle36Bnj7PMCvY6fP6kixwU3c3_CMb_rnnYOxg9WKn8LMmc5F__p2w3NWJc0o1vmCFmhHd5hRbr0S4MnMFnx09qvdSHE_E_40H0pQOxE0om2T2czVDOAInkTXn4xgdx_FmRgo8OaBh2XYqFHTf2zmYmF71tqRqlLzlsYBo1x1_CvdCt8U6AbjMhYznbgeBkGUKPQ?width=625&height=243&cropmode=none)
 
 ## Design of Microservice
-This diagram shows the internal design of the Transaction Microservice. The business logic and data logic related to transaction service is written in a seperate transaction processing framework. The framework receives input via Web Api and process those requests based on some simple rules. The transaction data is stored up in SQL Server.
+This diagram shows the internal design of the Transaction Microservice. The business logic and data logic related to transaction service is written in a seperate transaction processing framework. The framework receives input via Web Api and process those requests based on some simple rules. The transaction data is stored up in SQL database.
 
 ![Microservice design](https://8dk2lg.dm.files.1drv.com/y4md899yaH9aFP7Z1qhi_kCicZwQMYJWDA4SAdihporow8okXYUFcl-lp-2Awv5ldmlGmOEqwrxv3je-XaQqM7fnZZLzJKFzv7WDrC7Hyd2QLLglJfjNhWaFiCRJXzaXjghqK8y1XZJUuHAJiVdfl3_90NuPyNV-zsb5UOKBpRBbeFx3LpI0gPivXhIRBtFq6ZdInV5ub8r5U-Ibw9Zb-0YzQ?width=631&height=617&cropmode=none)
 
@@ -150,7 +150,9 @@ When a data is read from the DB and when business logic is applied to the data, 
 
 The state of the values in each of the transaction produces a conflict when the system attempts to save the changes and identifies using the concurrency token that the values being updated to the database are not the Original values that was read from the database and it throws DbUpdateConcurrencyException.
 
-The approach to handle the concurrency conflict is:
+[Reference: docs.microsoft.com](https://docs.microsoft.com/en-us/visualstudio/data-tools/handle-a-concurrency-exception?view=vs-2017)
+
+The general approach to handle the concurrency conflict is [Reference MSDN]:
 
 1. Catch **DbUpdateConcurrencyException** during SaveChanges
 2. Use **DbUpdateConcurrencyException.Entries** to prepare a new set of changes for the affected entities.
@@ -235,8 +237,6 @@ To use AppInsights, you need to have a Azure account and  create a AppInsights i
     "InstrumentationKey": "<Your Instrumentation Key>"
   },
 ```
-![App Insights](https://h9xuua.dm.files.1drv.com/y4mUSRvB0O2oEULGYfwmKKXXBxhcXzQAD857H6yecZJCibNnu4GASPSEPwpsKl7HGrpugVrl9Y4qbC6vb3hv3CaGyTeWFZZrss1WZV81NcFW3zHbF1EFt_sR5gvxdK69i-nwks1QUpogfYhV63oWI2xbpK-ZJmdjxfwr2Ei49uVevNRcrxV2RmMQ_ywqOKqm6f7-DchRpS56ZqF3MnQaomKTQ?width=1602&height=887&cropmode=none)
-
 ---
 ## Swagger: API Documentation
 
@@ -283,10 +283,10 @@ Download the postman collection from [here](https://1drv.ms/u/s!AshsJMsiN-avgQCg
     - Transaction.WebApi
     - Gateway.WebApi
     - SimpleBanking.ConsoleApp
+8. Gateway host and port should be configured correctly in the ConsoleApp
+9. Idenity and Transaction service host and port should be configured correctly in the gateway -> configuration.json 
 
-#### Note:
-a. Gateway host and port should be configured correctly in the ConsoleApp.
-b. Idenity and Transaction service host and port should be configured correctly in the gateway -> configuration.json 
+- Sample data to test
 
 | Account Number | Currency | Username | Password |
 | -------- | -------- | -------- | -------- |
