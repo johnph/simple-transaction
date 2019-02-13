@@ -150,9 +150,9 @@ When a data is read from the DB and when business logic is applied to the data, 
 
 The state of the values in each of the transaction produces a conflict when the system attempts to save the changes and identifies using the concurrency token that the values being updated to the database are not the Original values that was read from the database and it throws DbUpdateConcurrencyException.
 
-[Reference: docs.microsoft.com](https://docs.microsoft.com/en-us/visualstudio/data-tools/handle-a-concurrency-exception?view=vs-2017)
+[Reference: docs.microsoft.com](https://docs.microsoft.com/en-us/ef/core/saving/concurrency)
 
-The general approach to handle the concurrency conflict is [Reference MSDN]:
+The general approach to handle the concurrency conflict is:
 
 1. Catch **DbUpdateConcurrencyException** during SaveChanges
 2. Use **DbUpdateConcurrencyException.Entries** to prepare a new set of changes for the affected entities.
