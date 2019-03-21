@@ -1,8 +1,6 @@
-﻿using Transaction.WebApi.Models;
-using AutoMapper;
-using Transaction.Framework.Extensions;
+﻿using AutoMapper;
 using Transaction.Framework.Domain;
-using Transaction.Framework.Types;
+using Transaction.WebApi.Models;
 
 namespace Transaction.WebApi.Mappers
 {
