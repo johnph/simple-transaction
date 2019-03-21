@@ -13,11 +13,7 @@ namespace Transaction.WebApi.Mappers
             CreateMap<TransactionModel, AccountTransaction>()
                  .AfterMap<SetIdentityAction>()
                  .ForAllMembers(opts => opts.Ignore());
-                 
-            //.ForMember(dest => dest.Amount, opt => opt.MapFrom(o => new Money(o.Amount, o.Currency.TryParseEnum<Currency>())))
-            //.ForMember(dest => dest.AccountNumber, opt => opt.Ignore())
-            //.ForMember(dest => dest.TransactionType, opt => opt.Ignore());
-
+               
             CreateMap<TransactionResult, TransactionResultModel>()
                 .ForMember(dest => dest.Balance, opt => opt.MapFrom(o => o.Balance.Amount.ToString("N")))
                 .ForMember(dest => dest.Currency, opt => opt.MapFrom(o => o.Balance.Currency.ToString())); 
